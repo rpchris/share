@@ -1,0 +1,154 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<!--
+		Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess
+		-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Nunito+Sans">
+		<link href='bootstrap/css/bootstrap.min.css' rel='stylesheet'/>
+		<style>
+			body{
+				background-color: #eee;
+			}
+
+			svg {
+				width: 100%;
+				height: 100%;
+				position: center;
+			}
+
+			text{
+				font-family: 'Nunito Sans', 'Arial', san-serif;
+			}
+
+			.legend {
+				font-family: 'Nunito Sans', 'Arial', san-serif;
+				font-size: 60%;
+				fill:#999;
+			}
+
+			rect {
+				stroke-width: 2;
+			}
+
+			.axis text {
+				font-family: 'Nunito Sans', 'Arial', san-serif;
+				font-size: 60%;
+				fill:#999;
+			}
+
+			.axis path{
+				fill: none;
+				stroke: #555;
+			}
+
+			.axis line {
+				fill: none;
+				stroke: #555;
+				shape-rendering: crispEdges;
+			}
+
+			.axis .tick line {
+				stroke-width: 1;
+				stroke: #555;
+			}
+
+			.axisHorizontal path{
+				fill: none;
+			}
+
+			.axisHorizontal line {
+				fill: none;
+				stroke: #555;
+				shape-rendering: crispEdges;
+			}
+
+			.axisHorizontal .tick line {
+				stroke-width: 1;
+				stroke: #555;
+			}
+
+			.grid .tick {
+			    stroke: #333;
+			    opacity: 1;
+			}
+			.grid path {
+			      stroke-width: 0;
+			}
+
+			.bar {
+				fill-opacity: 1;
+			}
+
+			.line, .line2 {
+				fill: none;
+				stroke-width: 2px;
+			}
+
+			.chart-tooltip {   
+				position: absolute;
+				text-align: center;           
+				width: 120px;                  
+				height: 70px;                 
+				padding: 2px;             
+				font-family: 'Nunito Sans', 'Arial', san-serif; 
+				font-size: 11px;
+				color:#fff;      
+				background: #000;   
+				border: solid 1px #555;      
+				border-radius: 4px;           
+				pointer-events: none;  
+				z-index: 9999;       
+			}
+
+			#chart1{
+				height:300px;
+				background-color: #222;
+				color:#777;
+			};
+
+		</style>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://d3js.org/d3.v3.min.js"></script>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					Dashboard
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-heading">ROE Processed by Pay Period</div>
+						<div class="panel-body">
+							<div id="chart1">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/roe-processed-chart.js"></script>
+		<script>
+			var dataset = [
+				{payperiod:"2017-02-01", total:0, rejected:0, failed:0},
+				{payperiod:"2017-02-15", total:0, rejected:0, failed:0},
+				{payperiod:"2017-03-02", total:32, rejected:15, failed:7},
+				{payperiod:"2017-03-16", total:67, rejected:12, failed:5},
+				{payperiod:"2017-04-01", total:93, rejected:4, failed:4},
+				{payperiod:"2017-04-15", total:121, rejected:10, failed:4},
+				{payperiod:"2017-04-30", total:66, rejected:30, failed:12}
+			];
+			drawROEProcessedChart("#chart1", dataset);
+		</script>
+	</body>
+</html>
